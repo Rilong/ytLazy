@@ -1,0 +1,61 @@
+.ytLazy {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+.ytLazy-preview {
+    width: 100%;
+}
+
+.ytLazy-darkOverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 2;
+}
+
+.ytLazy-iframe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.ytLazy-playButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 68px;
+    height: 48px;
+    margin-left: -34px;
+    margin-top: -24px;
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+}
+
+.ytLazy-playButton .ytLazy-playButton-icon {
+    fill: #212121;
+}
+
+.ytLazy:hover .ytLazy-playButton .ytLazy-playButton-icon {
+    fill: #f00;
+}
+
+.ytLazy-playButton:focus .ytLazy-playButton-icon {
+    fill: #f00;
+}
