@@ -19,6 +19,18 @@ var ytLazy = {
     }
   },
 
+  destroy: function () {
+    var ytVideos = document.getElementsByClassName('ytLazy')
+    if (ytVideos.length === 0) {
+      return
+    }
+
+    for (var i = 0; i < ytVideos.length; i++) {
+      ytVideos[i].onclick = null
+      ytVideos[i].innerHTML = ''
+    }
+  },
+
   _build: function (element, params) {
     element.appendChild(this._playButton())
     element.appendChild(this._preview(params.v))
@@ -61,11 +73,17 @@ var ytLazy = {
   },
 
   _iframe: function (videoId) {
+    var src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1'
+
+    if(typeof this.options.relatedVideos !== 'undefined' && this.options.relatedVideos === false) {
+      src += '&rel=0'
+    }
+
     var iframe = document.createElement('iframe')
     iframe.classList.add('ytLazy-iframe')
     iframe.width = '100%'
     iframe.height = '100%'
-    iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1'
+    iframe.src = src
     iframe.title = 'YouTube video player'
     iframe.frameBorder = '0'
     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
