@@ -19,6 +19,13 @@ var ytLazy = {
     }
   },
 
+  updateOne: function (element) {
+    var videoParams = this._parseURL(element.dataset.ytlazyVideo)
+    this.destroyOne(element)
+    this._build(element, videoParams)
+    element.onclick = this._onPlay.bind(this, element, videoParams.v)
+  },
+
   destroy: function () {
     var ytVideos = document.getElementsByClassName('ytLazy')
     if (ytVideos.length === 0) {
@@ -29,6 +36,11 @@ var ytLazy = {
       ytVideos[i].onclick = null
       ytVideos[i].innerHTML = ''
     }
+  },
+
+  destroyOne: function (element) {
+    element.innerHTML = ''
+    element.onclick = null
   },
 
   _build: function (element, params) {
